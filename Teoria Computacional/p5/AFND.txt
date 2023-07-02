@@ -1,0 +1,16 @@
+A,B,C,D,E,F,G
+a,b,c
+A
+C,D,F
+A,a,B
+A,b,C
+A,c,D
+B,c,E
+C,b,G
+C,c,D
+D,b,G
+D,c,D
+E,a,B
+E,b,F
+G,b,G
+G,c,D
