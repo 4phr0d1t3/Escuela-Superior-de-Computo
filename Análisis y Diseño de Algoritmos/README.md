@@ -1,5 +1,5 @@
 # Análisis y Diseño de Algoritmos
-Este repositorio está conformado por las prácticas de codificación de los temas vistos en la asignatura de Análisis y Diseño de Algoritmos.
+Esta sección está conformada por las prácticas de codificación de los temas vistos en la asignatura de Análisis y Diseño de Algoritmos.
 
 	p1.c: Ordenamiento por inserción.
 	p2.c: Ordenamiento por mezcla.
