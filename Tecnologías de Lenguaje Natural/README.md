@@ -1,3 +1,10 @@
+# Natural Language Technologies
+This repository consists of coding practices related to the topics covered in the Natural Language Technologies course.
+
+	p1.ipynb: Categorization of samples from 5 books.
+	p2.ipynb: Clustering of samples from 5 books.
+	p3.ipynb: Application of classification models to reviews to analyze opinion polarity.
+	p4.ipynb: Application of text summarization models to news articles.
 # Tecnologías de lenguaje natural
 Este repositorio está conformado por las prácticas de codificación de los temas vistos en la asignatura de Tecnologías de Lenguaje Natural.
 
