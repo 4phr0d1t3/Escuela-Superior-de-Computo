@@ -1,3 +1,19 @@
+# Computer Vision
+This section consists of coding practices related to the topics covered in the Computer Vision course.
+
+	p1.m: Class assignment based on distance between coordinates and centroid.
+	p2.m: p1 + boundary condition for points that do not belong to any class based on distance.
+	p3.m: p1 + calculation of Mahalanobis distance with randomly generated data and given dispersion.
+	p4.m: Classification using Mahalanobis distance calculation or Maximum Probability.
+	p5.py: Perceptron weight calculation with simple error adjustment.
+	p6:
+	   p6.m: Saving features of an object found in an image to a CSV file.
+	   p6.ipynb: Clustering using K-means with a classifier based on Euclidean distance.
+	proyecto:
+	   getRGB: Saving the colors of each pixel in the images to a CSV file.
+	   getRegionProps: Saving features of an object found in an image to a CSV file.
+	   mean.py: Obtaining centroids of RGB and object features by averaging for each fruit.
+	   gui.mlapp: Image classifier with 5 fruit groups, with an interface.
 # Visión Artificial
 Esta sección está conformada por las prácticas de codificación de los temas vistos en la asignatura de Visión Artificial.
 
