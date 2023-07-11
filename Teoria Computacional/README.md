@@ -1,3 +1,12 @@
+# Computational Theory
+This section consists of coding practices related to the topics covered in the Computational Theory course.
+	
+	p1.c: String operations.
+	p2.c: Language operations.
+	p3.c: Deterministic Finite Automata (DFA).
+	p4.c: Non-deterministic Finite Automata (NFA).
+	p5.c: Dynamic NFA.
+	p6.c: Reduction of Infinite Automaton to DFA.
 # Teoria Computacional
 Esta sección está conformada por las prácticas de codificación de los temas vistos en la asignatura de Teoria Computacional.
 
