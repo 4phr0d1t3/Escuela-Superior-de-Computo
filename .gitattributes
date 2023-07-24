@@ -1,5 +1,0 @@
-# ignore jupyter notebooks in postprocessing in the language bar on github
-'Análisis y Diseño de Algoritmos/** linguist-vendored'
-'Tecnologías de Lenguaje Natural/** linguist-vendored'
-'Teoria Computacional/** linguist-vendored'
-'Visión Artificial/** linguist-vendored'
