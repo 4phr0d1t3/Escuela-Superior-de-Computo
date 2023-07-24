@@ -1,3 +1,5 @@
 # Modify .gitattributes
-*/*.ipynb linguist-vendored
-*/*/*.ipynb linguist-vendored
+
+Artificial-Vision/p6/*.ipynb linguist-vendored
+Artificial-Vision/proyecto/*.ipynb linguist-vendored
+Natural-Language-Technologies/*.ipynb linguist-vendored
