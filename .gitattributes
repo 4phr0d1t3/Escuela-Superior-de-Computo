@@ -1,1 +1,3 @@
-Natural-Language-Technologies/*.ipynb linguist-vendored
+# Modify .gitattributes
+*/*.ipynb linguist-vendored
+*/*/*.ipynb linguist-vendored
