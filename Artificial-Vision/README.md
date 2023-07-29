@@ -7,13 +7,14 @@ This section consists of coding practices related to the topics covered in the C
 	p4.m: Classification using Mahalanobis distance calculation or Maximum Probability.
 	p5.py: Perceptron weight calculation with simple error adjustment.
 	p6:
-	   p6.m: Saving features of an object found in an image to a CSV file.
-	   p6.ipynb: Clustering using K-means with a classifier based on Euclidean distance.
+		p6.m: Saving features of an object found in an image to a CSV file.
+		p6.ipynb: Clustering using K-means with a classifier based on Euclidean distance.
+		p6.py: Python code version of p6.ipynb.
 	proyecto:
-	   getRGB: Saving the colors of each pixel in the images to a CSV file.
-	   getRegionProps: Saving features of an object found in an image to a CSV file.
-	   mean.py: Obtaining centroids of RGB and object features by averaging for each fruit.
-	   gui.mlapp: Image classifier with 5 fruit groups, with an interface.
+		getRGB.m: Saving the colors of each pixel in the images to a CSV file.
+		getRegionProps.m: Saving features of an object found in an image to a CSV file.
+		mean.py: Obtaining centroids of RGB and object features by averaging for each fruit.
+		gui.mlapp: Image classifier with 5 fruit groups, with an interface.
 # Visión Artificial
 Esta sección está conformada por las prácticas de codificación de los temas vistos en la asignatura de Visión Artificial.
 
@@ -25,8 +26,10 @@ Esta sección está conformada por las prácticas de codificación de los temas 
 	p6:
 		p6.m: Guardado de caracteristicas de un objeto encontrado en una imagen, en un csv.
 		p6.ipynb: Clusterización mediante K-means, con clasificador mediante distancia Euclidiana.
+		p6.py: Versión en código de python de p6.ipynb.
 	proyecto:
-		getRGB: Guardado de los colores de cada pixel en las imagenes, en un csv.
-		getRegionProps: Guardado de caracteristicas de un objeto encontrado en una imagen, en un csv.
-		mean.py: Obtencion de centroides de RGB y caracterisitcas de objeto por promedio de cada fruta.
+		getRGB.m: Guardado de los colores de cada pixel en las imagenes, en un csv.
+		getRegionProps.m: Guardado de caracteristicas de un objeto encontrado en una imagen, en un csv.
+		mean.ipynb: Obtencion de centroides de RGB y caracterisitcas de objeto por promedio de cada fruta.
+		mean.py: Versión en código de python de mean.ipynb.
 		gui.mlapp: Clasificador de imagenes con 5 grupos de frutas, con interfaz.
