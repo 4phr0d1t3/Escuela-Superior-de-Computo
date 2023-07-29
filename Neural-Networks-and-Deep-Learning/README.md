@@ -22,7 +22,7 @@ Este repositorio está conformado por las prácticas de codificación de los tem
 	p1.c: Impresión de los componentes necesarios del perceptron.
 	p2.c: Perceptron simple para la solución de las compuertas AND, OR y XOR.
 	p3.c: Perceptron simple con regla delta generalizada para la solución de las compuertas AND y OR.
-		(debe indicar el num. de epocas maximo al ejecutar Ej.: "./a.out 5000")
+		(Debe indicar el num. de epocas maximo al ejecutar Ej.: "./a.out 5000")
 	p4:
 		Backpropagation.ipynb: Red Neuronal que implementa la compuerta lógica XOR.
 		iris_neural_net.ipynb: Red Neuronal que clasifica los datos de iris.csv.
