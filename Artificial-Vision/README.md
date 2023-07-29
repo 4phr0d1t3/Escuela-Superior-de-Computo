@@ -13,7 +13,8 @@ This section consists of coding practices related to the topics covered in the C
 	proyecto:
 		getRGB.m: Saving the colors of each pixel in the images to a CSV file.
 		getRegionProps.m: Saving features of an object found in an image to a CSV file.
-		mean.py: Obtaining centroids of RGB and object features by averaging for each fruit.
+		mean.ipynb: Obtaining centroids of RGB and object features by averaging for each fruit.
+		mean.py: Python code version of mean.ipynb.
 		gui.mlapp: Image classifier with 5 fruit groups, with an interface.
 # Visión Artificial
 Esta sección está conformada por las prácticas de codificación de los temas vistos en la asignatura de Visión Artificial.
