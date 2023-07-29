@@ -6,9 +6,10 @@
 <br>
 <h4>
 	In this repository, you will find the practices carried out by Sebastian Ruiz Uvalle at the Superior School of Computing of the National Polytechnic Institute.
+	<br>
+	Note: Ignore the folder named '0', this folder is only for the 'Languages' section to work well.
 	<br><br>
 	En este repositorio se encuentran las practicas realizadas por Sebastian Ruiz Uvalle en la Escuela Superior de Cómputo del Insituto Politécnico Nacional.
+	<br>
+	Nota: Ignora la carpeta llamada '0', esta carpeta es solo para que la sección de 'Lenguajes' funcione correctamente.
 </h4>
-
-Nota: Ignora la carpeta llamada '0', esta carpeta es solo para que la sección de 'Lenguajes' funcione correctamente.
-Note: Ignore the folder named '0', this folder is only for the 'Languages' section to work well.
