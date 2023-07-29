@@ -9,6 +9,7 @@ This repository consists of coding practices related to the topics covered in th
 	p4:
 		Backpropagation.ipynb: Neural Network implementing the XOR logic gate.
 		iris_neural_net.ipynb: Neural Network classifying the data from iris.csv.
+	p5.ipynb: Application of Support Vector Classification, Nu-Support Vector Classification, and Support Vector Classification with different types of Kernels.
 	proyect1:
 		data.csv: Hu moments obtained from the images located in shapes.zip.
 		patterns.py: Obtaining the Hu moments of the images located in shapes.zip.
@@ -26,6 +27,7 @@ Este repositorio está conformado por las prácticas de codificación de los tem
 	p4:
 		Backpropagation.ipynb: Red Neuronal que implementa la compuerta lógica XOR.
 		iris_neural_net.ipynb: Red Neuronal que clasifica los datos de iris.csv.
+	p5.ipynb: Aplicación de Clasificación de Vectores Soporte, Clasificación de Vectores de Soporte Nu y Clasificación de Vectores Soporte con diferentes tipos de Kernel.
 	proyect1:
 		data.csv: Momentos de Hu obtenidos de las imágenes ubicadas en shapes.zip.
 		patterns.py: Obtención de los momentos de Hu de las imágenes ubicadas en shapes.zip.
