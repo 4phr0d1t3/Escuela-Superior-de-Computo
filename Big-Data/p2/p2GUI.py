@@ -1,12 +1,19 @@
+import matplotlib
+matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 from pyspark.sql import SparkSession
 from pyspark.sql import functions as f
 from pyspark.ml.clustering import KMeans
 from pyspark.ml.feature import VectorAssembler
 from pyspark.ml.evaluation import ClusteringEvaluator
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
-
-spark = SparkSession.builder.appName('practica2').getOrCreate()
+from tkinter import Tk
+from tkinter import Label
+from tkinter import Text
+from tkinter import Button
+from tkinter import filedialog
+from pyspark.sql import SparkSession
 
 def obtain_features(df):
 	input_cols = ['op','co','ex','ag','ne','wordcount']
@@ -18,9 +25,9 @@ def obtain_features(df):
 
 	return final_data
 
-def open_data():
+def open_data(path, spark):
 	df = spark.read.csv(
-		"./analisis.csv",
+		path,
 		header=True,
 		inferSchema=True
 	)
@@ -62,6 +69,9 @@ def analyse_for_k(data):
 	plt.grid(True)
 	plt.show()
 
+	canvas = FigureCanvasTkAgg(plt.gcf(), master=window)
+	canvas.draw()
+	canvas.get_tk_widget().pack()
 
 def plot(predictions, X_axis, y_axis):
 	cluster_labels = predictions.select("prediction").rdd.flatMap(lambda x: x).collect()
@@ -79,6 +89,10 @@ def plot(predictions, X_axis, y_axis):
 	plt.legend()
 	plt.show()
 
+	canvas = FigureCanvasTkAgg(plt.gcf(), master=window)
+	canvas.draw()
+	canvas.get_tk_widget().pack()
+
 def cluster(data, k):
 	kmeans = KMeans(featuresCol="features", k=k)
 	model = kmeans.fit(data)
@@ -87,15 +101,88 @@ def cluster(data, k):
 	
 	return predictions
 
+def analisys(path):
+	spark = SparkSession.builder.appName('practica2').getOrCreate()
 
-data = open_data()
-analyse_for_k(data)
+	data = open_data(path, spark)
+	analyse_for_k(data)
 
-k = 3
-predictions = cluster(data, k)
+	spark.stop()
 
-X_axis = 'op'
-y_axis = 'wordcount'
-plot(predictions, X_axis, y_axis)
+def classify(path):
+	spark = SparkSession.builder.appName('practica2').getOrCreate()
 
-spark.stop()
+	data = open_data(path, spark)
+	k = 3
+	predictions = cluster(data, k)
+
+	X_axis = 'op'
+	y_axis = 'wordcount'
+	plot(predictions, X_axis, y_axis)
+
+	spark.stop()
+
+def browseFilesA():
+	filename = filedialog.askopenfilename(
+		initialdir = "./",
+		title = "Select a File",
+		filetypes = (
+			("Text files","*.csv*"),
+			("all files","*.*")
+	))
+	path = filename
+	label_file_explorer.configure(text="File Opened: " + path)
+	analisys(path)
+
+def browseFilesC():
+	filename = filedialog.askopenfilename(
+		initialdir = "./",
+		title = "Select a File",
+		filetypes = (
+			("Text files","*.csv*"),
+			("all files","*.*")
+	))
+	path = filename
+	label_file_explorer.configure(text="File Opened: " + path)
+	classify(path)
+
+window = Tk()
+
+window.title('k means')
+
+window.geometry("512x512")
+
+label_file_explorer = Label(
+	window,
+	text = "File Explorer using Tkinter",
+	width = 64,
+	height = 4
+)
+
+label_id = Label(
+	window,
+	text = "Clasificador Kmeans",
+	width = 64,
+	height = 4
+)
+
+button_analisys = Button(
+	window,
+	text = "Para mostrar analisis de k",
+	command = browseFilesA
+)
+
+button_classify = Button(
+	window,
+	text = "Clasificar con k = 3",
+	command = browseFilesC
+)
+
+label_file_explorer.grid(column = 1, row = 1)
+
+label_id.grid(column = 1, row = 2)
+
+button_analisys.grid(column = 1, row = 3)
+button_classify.grid(column = 1, row = 4)
+
+window.mainloop()
