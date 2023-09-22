@@ -6,50 +6,40 @@ from tkinter import Button
 from tkinter import filedialog
 from pyspark.sql import SparkSession
 
-def calculateDistances(id, df):
-	targetRow = df.take(id + 1)[-1]
-	distances = []
-	for i in range(df.count()):
-		sum = 0
-		for feature in range(2, len(df.columns)):
-			row = df.take(i + 1)[-1]
-			sum += pow(targetRow[feature] - row[feature], 2)
-		sum = pow(sum, 1/2)
-		distances.append(sum)
+import numpy as np
+import matplotlib.pyplot as plt
 
-		porcentile = i/df.count() * 100
-		formatted_porcentile = "{:.2f}".format(porcentile)
-		print('[', formatted_porcentile,'% ]')
-
-	return distances
-
-def knn(id, k, df):
-	dist = calculateDistances(id, df)
-	ids = sorted(range(len(dist)), key=lambda sub: dist[sub])[:(k+1)]
-	m = 0
-	print("Los mas cercanos son: ")
-	print("\tdistancia\tid\tdiagnostico")
-	for i in ids[1:k+1]:
-		targetRow = df.take(i + 1)[-1]
-		print(dist[i], '\t', i, '\t', targetRow['diagnosis'])
-		if targetRow['diagnosis'] == 'M':
-			m += 1
-	print("Con", m, "M y", k-m, "B")
-	print("Predicho: M") if m > k/2 else print("Predicho: B")
-
-	row = df.take(id + 1)[-1]
-	print("Real: ", row['diagnosis'])
+def hypothesis(x, m, b):
+	return m * x + b
 
 def start(path):
-	spark = SparkSession.builder.appName('practica1').getOrCreate()
+	spark = SparkSession.builder.appName('practica2').getOrCreate()
 	df = spark.read.csv(path, header=True, inferSchema=True)
-	id = input_id.get(1.0, "end-1c")
-	k = input_k.get(1.0, "end-1c")
 
-	id = int(id)
-	k = int(k)
+	x = np.array(df.select("age").rdd.map(lambda row: row[0]).collect())
+	y = np.array(df.select("charges").rdd.map(lambda row: row[0]).collect())
 
-	knn(id, k, df)
+	m = 0
+	b = 0
+	
+	learning_rate = 0.001
+	epochs = 1000
+	n = len(x)
+	for _ in range(epochs):
+		d_m = -(1 / n) * np.sum(x * (y - hypothesis(x, m, b)))
+		d_b = -(1 / n) * np.sum(y - hypothesis(x, m, b))
+		m -= learning_rate * d_m
+		b -= learning_rate * d_b
+
+	plt.scatter(x, y, label='Data points')
+	plt.plot(x, [hypothesis(xi, m, b) for xi in x], color='red', label='Regression line')
+	plt.xlabel('Age')
+	plt.ylabel('Charges')
+	plt.legend()
+	plt.show()
+
+	label_m.configure(text=m)
+	label_b.configure(text=b)
 
 def browseFiles():
 	filename = filedialog.askopenfilename(
@@ -62,6 +52,19 @@ def browseFiles():
 	path = filename
 	label_file_explorer.configure(text="File Opened: " + path)
 	start(path)
+
+def predict():
+	new_x = input_new_x.get(1.0, "end-1c")
+	m = label_m.cget("text")
+	b = label_b.cget("text")
+
+	new_x = int(new_x)
+	m = float(m)
+	b = float(b)
+
+	predicted_y = hypothesis(new_x, m, b)
+	label_predicted.configure(text="Para la edad de " + str(new_x) + " se predice una Y: ")
+	label_y.configure(text=str(predicted_y))
 
 window = Tk()
 
@@ -76,27 +79,20 @@ label_file_explorer = Label(
 	height = 4
 )
 
-label_id = Label(
-	window,
-	text = "Id del dato a clasificar",
-	width = 64,
-	height = 4
-)
-
 input_id = Text(
 	window,
 	height = 4,
 	width = 20
 )
 
-label_k = Label(
+label_new_x = Label(
 	window,
-	text = "k a usar",
+	text = "Nuevo dato a predecir",
 	width = 64,
 	height = 4
 )
 
-input_k = Text(
+input_new_x = Text(
 	window,
 	height = 4,
 	width = 20
@@ -104,18 +100,55 @@ input_k = Text(
   
 button_explore = Button(
 	window,
-	text = "Browse Files",
+	text = "Apply Linear Regression",
 	command = browseFiles
 )
 
+label_m = Label(
+	window,
+	text = "m",
+	height = 1,
+	width = 20
+)
+
+label_b = Label(
+	window,
+	text = "b",
+	height = 1,
+	width = 20
+)
+
+button_predict = Button(
+	window,
+	text = "Predict",
+	command = predict
+)
+
+label_predicted = Label(
+	window,
+	text = "y",
+	height = 2,
+	width = 50
+)
+
+label_y = Label(
+	window,
+	text = ".",
+	height = 2,
+	width = 50
+)
+
 label_file_explorer.grid(column = 1, row = 1)
+button_explore.grid(column = 1, row = 2)
 
-label_id.grid(column = 1, row = 2)
-input_id.grid(column = 1, row = 3)
+label_m.grid(column = 1, row = 3)
+label_b.grid(column = 1, row = 4)
 
-label_k.grid(column = 1, row = 4)
-input_k.grid(column = 1, row = 5)
+label_new_x.grid(column = 1, row = 5)
+input_new_x.grid(column = 1, row = 6)
+button_predict.grid(column = 1, row = 7)
 
-button_explore.grid(column = 1, row = 6)
+label_predicted.grid(column = 1, row = 8)
+label_y.grid(column = 1, row = 9)
 
 window.mainloop()
