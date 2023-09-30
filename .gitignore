@@ -1,3 +1,4 @@
+# Modify .gitignore
 desktop.ini
-Tareas/*
+Tareas
 .vscode/settings.json
